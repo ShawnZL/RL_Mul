@@ -102,7 +102,7 @@ class SCLSession:
         abc_command += 'map -D ' + str(self.params['mapping']['clock_period']) + '; '
         abc_command += 'write ' + output_design_file_mapped + '; '
         abc_command += 'topo; stime;'
-
+        print(abc_command)
         try:
             proc = check_output([self.params['abc_binary'], '-c',abc_command])
             # get reward

@@ -123,6 +123,7 @@ class A2C(nn.Module):
 
     def train_episode(self):
         state = self.game.reset()
+        print(state)
         self.normalizer.reset()
         self.normalizer.observe(state)
         state = self.normalizer.normalize(state)

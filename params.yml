@@ -7,7 +7,7 @@ design_file: multiplier.v
 
 # standard cell library mapping
 mapping:
-  clock_period: 1800   # in pico seconds
+  clock_period: 2000   # in pico seconds
   library_file: asap7.lib
 
 # FPGA mapping - exlusive with the above
