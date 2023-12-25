@@ -175,7 +175,7 @@ class A2C(nn.Module):
                 actor_loss = torch.mean(-log_probs * td_delta.detach())
                 # 均方误差损失函数
                 critic_loss = torch.mean(
-                    F.mse_loss(self.critic(state), td_target.detach()))
+                    F.mse_loss(self.critic(state), td_target.unsqueeze(1).detach()))
                 self.actor_optimizer.zero_grad()
                 self.critic_optimizer.zero_grad()
                 actor_loss.backward()  # 计算策略网络的梯度

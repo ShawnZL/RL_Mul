@@ -3,7 +3,7 @@ abc_binary: yosys-abc
 yosys_binary: yosys
 
 # path of the design file in one of the accepted formats by ABC
-design_file: adder.v
+design_file: multiplier.v
 
 # standard cell library mapping
 mapping:
@@ -29,6 +29,6 @@ optimizations:
 playground_dir: playground
 
 # agent training parameters
-episodes: 1
-iterations: 500
+episodes: 1000
+iterations: 200
 model_dir: /tmp/model.ckpt   # must be absolute path
