@@ -139,6 +139,9 @@ class A2C(nn.Module):
             if state is not None:  # Check if state is not None
                 state = torch.tensor(state, dtype=torch.float32).unsqueeze(0).detach()  # Add batch dimension
                 action_probs, _ = self.forward(state)
+                if action_probs is None:
+                    print(f'{self.game.iteration} action_probs is None')
+                    continue
                 print(f'action_probs is {action_probs}')
                 action_probs = action_probs.detach().numpy()
                 # action 选择任务，greed选择
@@ -150,6 +153,9 @@ class A2C(nn.Module):
                     print(f'action max is {action}')
                 print(f'action is {action}')
                 new_state, reward, done, _ = self.game.step(action)
+                if new_state is None:
+                    print(f'{self.game.iteration} new_state is None')
+                    continue
                 print(f'new_state is {new_state}')
                 # append this step
                 episode_states.append(state.numpy())

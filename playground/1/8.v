@@ -1,4 +1,4 @@
-// Benchmark "top" written by ABC on Mon Dec 25 16:58:17 2023
+// Benchmark "top" written by ABC on Mon Dec 25 16:58:23 2023
 
 module top ( 
     \a[0] , \a[1] , \a[2] , \a[3] , \a[4] , \a[5] , \a[6] , \a[7] , \a[8] ,
@@ -225,18 +225,18 @@ module top (
   assign new_n392 = new_n386 & ~new_n391;
   assign new_n393 = ~new_n386 & new_n391;
   assign \f[1]  = new_n392 | new_n393;
-  assign new_n395 = new_n386 & ~new_n389;
-  assign new_n396 = ~new_n390 & ~new_n395;
-  assign new_n397 = ~\a[2]  & ~\b[2] ;
-  assign new_n398 = \a[2]  & \b[2] ;
-  assign new_n399 = ~new_n397 & ~new_n398;
-  assign new_n400 = new_n396 & ~new_n399;
-  assign new_n401 = ~new_n396 & new_n399;
+  assign new_n395 = ~\a[2]  & ~\b[2] ;
+  assign new_n396 = \a[2]  & \b[2] ;
+  assign new_n397 = ~new_n395 & ~new_n396;
+  assign new_n398 = ~new_n386 & ~new_n390;
+  assign new_n399 = ~new_n389 & ~new_n398;
+  assign new_n400 = ~new_n397 & ~new_n399;
+  assign new_n401 = new_n397 & new_n399;
   assign \f[2]  = ~new_n400 & ~new_n401;
   assign new_n403 = ~\a[3]  & ~\b[3] ;
   assign new_n404 = \a[3]  & \b[3] ;
   assign new_n405 = ~new_n403 & ~new_n404;
-  assign new_n406 = ~new_n398 & ~new_n401;
+  assign new_n406 = ~new_n396 & ~new_n401;
   assign new_n407 = ~new_n405 & new_n406;
   assign new_n408 = new_n405 & ~new_n406;
   assign \f[3]  = ~new_n407 & ~new_n408;
