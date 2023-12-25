@@ -146,9 +146,10 @@ class A2C(nn.Module):
                 action_probs = action_probs.detach().numpy()
                 # action 选择任务，greed选择
                 if np.random.random() < self.epsilon:
-                    action = np.random.choice(range(self.num_actions), p=action_probs.ravel())
+                    action = np.random.choice(range(self.num_actions))
                     print(f'action greedy is {action}')
                 else:
+                    # action = np.random.choice(range(self.num_actions), p=action_probs.ravel())
                     action = np.argmax(action_probs)
                     print(f'action max is {action}')
                 print(f'action is {action}')

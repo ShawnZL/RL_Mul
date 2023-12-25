@@ -30,5 +30,5 @@ playground_dir: playground
 
 # agent training parameters
 episodes: 1
-iterations: 10
+iterations: 500
 model_dir: /tmp/model.ckpt   # must be absolute path
