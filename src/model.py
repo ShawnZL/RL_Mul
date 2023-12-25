@@ -54,7 +54,7 @@ class A2C(nn.Module):
         self.num_actions = self.game.action_space_length
         self.state_size = self.game.observation_space_size
         self.normalizer = Normalizer(self.state_size)
-
+        self.epsilon = 0.2
         self.critic = self.Critic(9)
         self.actor = self.Actor(9, 7)
         self.actor_optimizer = optim.Adam(self.parameters(), lr=0.01)
@@ -137,16 +137,20 @@ class A2C(nn.Module):
         while not done:
             log('  iteration: ' + str(self.game.iteration))
             if state is not None:  # Check if state is not None
-                print(2)
                 state = torch.tensor(state, dtype=torch.float32).unsqueeze(0).detach()  # Add batch dimension
                 action_probs, _ = self.forward(state)
                 print(f'action_probs is {action_probs}')
                 action_probs = action_probs.detach().numpy()
-                action = np.random.choice(range(self.num_actions), p=action_probs.ravel())
+                # action 选择任务，greed选择
+                if np.random.random() < self.epsilon:
+                    action = np.random.choice(range(self.num_actions), p=action_probs.ravel())
+                    print(f'action greedy is {action}')
+                else:
+                    action = np.argmax(action_probs)
+                    print(f'action max is {action}')
                 print(f'action is {action}')
                 new_state, reward, done, _ = self.game.step(action)
                 print(f'new_state is {new_state}')
-                print(3)
                 # append this step
                 episode_states.append(state.numpy())
                 action_ = np.zeros(self.num_actions)
